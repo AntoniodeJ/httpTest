@@ -20,6 +20,7 @@ public class EchoPostHandler implements HttpHandler {
         BufferedReader br = new BufferedReader(isr);
         String query = br.readLine();
         ParseQuery.parseQuery(query, parameters);
+        System.out.println(parameters.values());
 
         // send response
         String response = "";
