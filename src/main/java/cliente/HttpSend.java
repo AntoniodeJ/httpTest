@@ -28,8 +28,10 @@ public class HttpSend{
             out.write(mensagem.getBytes());
             
             //InputStream in = new BufferedInputStream(urlConnection.getInputStream());
+            InputStream in = new BufferedInputStream(urlConnection.getInputStream());
             BufferedReader entrada = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
             
+            in.read();
             entrada.readLine();
             
         } catch (MalformedURLException e) {

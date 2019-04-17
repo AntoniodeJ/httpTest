@@ -30,8 +30,8 @@ public class EchoPostHandler implements HttpHandler {
         exchange.sendResponseHeaders(200, response.length());
         OutputStream os = exchange.getResponseBody();
         PrintStream saida = new PrintStream(os);
-        //os.write(response.toString().getBytes());
-        saida.println(response.toString());
+        os.write(response.toString().getBytes());
+        saida.println(response);
         os.close();
         saida.close();
 	}
