@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.io.PrintStream;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -20,7 +21,7 @@ public class EchoPostHandler implements HttpHandler {
         BufferedReader br = new BufferedReader(isr);
         String query = br.readLine();
         ParseQuery.parseQuery(query, parameters);
-        System.out.println(parameters.values());
+        System.out.println("Recebeu post!");
 
         // send response
         String response = "";
@@ -28,8 +29,11 @@ public class EchoPostHandler implements HttpHandler {
                  response += key + " = " + parameters.get(key) + "\n";
         exchange.sendResponseHeaders(200, response.length());
         OutputStream os = exchange.getResponseBody();
-        os.write(response.toString().getBytes());
+        PrintStream saida = new PrintStream(os);
+        //os.write(response.toString().getBytes());
+        saida.println(response.toString());
         os.close();
+        saida.close();
 	}
 
 }
