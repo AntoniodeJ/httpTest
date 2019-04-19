@@ -20,8 +20,13 @@ public class EchoPostHandler implements HttpHandler {
         InputStreamReader isr = new InputStreamReader(exchange.getRequestBody(), "utf-8");
         BufferedReader br = new BufferedReader(isr);
         String query = br.readLine();
+        System.out.println(query);
         ParseQuery.parseQuery(query, parameters);
-        System.out.println("Recebeu post!");
+        String recebido = (String) parameters.get("SensorsData");
+        String[] sensorsData = recebido.split("<SD>");
+        for (String sensorData : sensorsData) {
+        	System.out.println(sensorData);
+        }
 
         // send response
         String response = "";
@@ -29,12 +34,8 @@ public class EchoPostHandler implements HttpHandler {
                  response += key + " = " + parameters.get(key) + "\n";
         exchange.sendResponseHeaders(200, response.length());
         OutputStream os = exchange.getResponseBody();
-        PrintStream saida = new PrintStream(os);
-        //os.write(response.toString().getBytes());
-        //saida.println(response);
-        saida.println("Teste");
+        os.write(response.toString().getBytes());
         os.close();
-        saida.close();
 	}
 
 }

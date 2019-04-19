@@ -1,6 +1,9 @@
 package servidor;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 
 import com.sun.net.httpserver.HttpExchange;
@@ -12,6 +15,7 @@ public class RootHandler implements HttpHandler {
 		String response = "<h1>Server start success if you see this message</h1>";
         exchange.sendResponseHeaders(200, response.length());
         OutputStream os = exchange.getResponseBody();
+                       
         os.write(response.getBytes());
         os.close();
 	}

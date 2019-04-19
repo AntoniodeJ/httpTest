@@ -8,6 +8,7 @@ public class MainServidor {
 	
 	public static void main(String args[]) {
 		int port = Integer.parseInt(System.getenv("PORT"));
+		//int port = 9000;
 		HttpServer server;
 		try {
 			server = HttpServer.create(new InetSocketAddress(port), 0);
@@ -19,7 +20,6 @@ public class MainServidor {
 			server.setExecutor(null);
 			server.start();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}		
 	}
