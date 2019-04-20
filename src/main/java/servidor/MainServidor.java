@@ -7,8 +7,8 @@ import com.sun.net.httpserver.*;
 public class MainServidor {
 	
 	public static void main(String args[]) {
-		int port = Integer.parseInt(System.getenv("PORT"));
-		//int port = 9000;
+		//int port = Integer.parseInt(System.getenv("PORT"));
+		int port = 9000;
 		HttpServer server;
 		try {
 			server = HttpServer.create(new InetSocketAddress(port), 0);
@@ -17,7 +17,7 @@ public class MainServidor {
 			server.createContext("/echoHeader", new EchoHeaderHandler());
 			server.createContext("/echoGet", new EchoGetHandler());
 			server.createContext("/echoPost", new EchoPostHandler());
-			server.setExecutor(null);
+			server.setExecutor(java.util.concurrent.Executors.newCachedThreadPool());
 			server.start();
 		} catch (IOException e) {
 			e.printStackTrace();

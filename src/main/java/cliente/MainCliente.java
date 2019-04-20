@@ -21,7 +21,7 @@ public class MainCliente {
 
 	public static void main(String[] args) throws ClientProtocolException, IOException {
 		HttpClient httpclient = HttpClients.createDefault();
-		HttpPost httppost = new HttpPost("https://http-test-antonio.herokuapp.com/echoPost");
+		HttpPost httppost = new HttpPost("https://activity-inferencer.herokuapp.com/echoPost");
 		//HttpPost httppost = new HttpPost("http://localhost:9000/echoPost");
 
 		// Request parameters and other properties.
@@ -29,7 +29,7 @@ public class MainCliente {
 		params.add(new BasicNameValuePair("Nome", "Antonio"));
 		params.add(new BasicNameValuePair("Tipo", "Treinamento"));
 		params.add(new BasicNameValuePair("Atividade", "Andando"));
-		params.add(new BasicNameValuePair("SensorsData", "TYPE_ACCELEROMETER;0.12;0.15;0.0005<SD>TYPE_GYROSCOPE;0.5;-2.3;-0.000232<SD>TYPE_ACCELEROMETER;0.1;-1.3;-0.002"));
+		params.add(new BasicNameValuePair("SensorsData", "TYPE_ACCELEROMETER;0.12;0.15;0.0005<SD>TYPE_GYROSCOPE;0.5;-1.2;-0.000232<SD>TYPE_ACCELEROMETER;0.1;-1.3;-0.002<SD>TYPE_GYROSCOPE;0.2;-2;-0.1"));
 		httppost.setEntity(new UrlEncodedFormEntity(params, "UTF-8"));
 
 		//Execute and get the response.
